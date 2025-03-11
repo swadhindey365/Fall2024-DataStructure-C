@@ -1,4 +1,4 @@
-//Adding newnode as a Head of three existing nodes in C manually.
+//Adding newnode as a Head of three existing nodes in C manually..
 #include <stdio.h>
 #include <stdlib.h>
 
