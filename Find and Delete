@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+int main() {
+    struct Node* head = NULL;
+    struct Node* newNode;
+    int key, n, value;
+    
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+    
+    for (int i = 0; i < n; i++) {
+        newNode = (struct Node*)malloc(sizeof(struct Node));
+        printf("Enter element %d: ", i + 1);
+        scanf("%d", &newNode->data);
+        newNode->next = NULL;
+        
+        if (head == NULL) {
+            head = newNode;
+        } else {
+            struct Node* last = head;
+            while (last->next != NULL) {
+                last = last->next;
+            }
+            last->next = newNode;
+        }
+    }
+    
+
+    printf("Linked List: ");
+    for (struct Node* ptr = head; ptr != NULL; ptr = ptr->next) {
+        printf("%d -> ", ptr->data);
+    }
+    printf("NULL\n");
+    
+  
+    printf("Enter the element to search and delete: ");
+    scanf("%d", &key);
+    
+    struct Node* current = head;
+    struct Node* prev = NULL;
+    
+    while (current != NULL && current->data != key) {
+        prev = current;
+        current = current->next;
+    }
+    
+    if (current == NULL) {
+        printf("Element %d not found in the list\n", key);
+    } else {
+        if (prev == NULL) {
+            head = current->next;
+        } else {
+            prev->next = current->next;
+        }
+        free(current);
+        printf("Element %d deleted successfully\n", key);
+    }
+    printf("Updated Linked List: ");
+    for (struct Node* ptr = head; ptr != NULL; ptr = ptr->next) {
+        printf("%d -> ", ptr->data);
+    }
+    printf("NULL\n");
+    
+    return 0;
+}
