@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Student {
+    int a;
+    char b;
+    struct Student* next;
+};typedef struct Student s;
+
+int main() {
+    s*x=(s*)malloc(sizeof(s));
+    s*y=(s*)malloc(sizeof(s));
+    s*z=(s*)malloc(sizeof(s));
+    s*newnode=(s*)malloc(sizeof(s));
+    s*start=newnode;
+    newnode->a=40;
+    newnode->b='D';
+    newnode->next=x;
+    x->a=10;
+    x->b='A';
+    x->next=y;
+    y->a=20;
+    y->b='B';
+    y->next=z;
+    z->a=30;
+    z->b='C';
+    z->next=NULL;
+    s*i=start;
+    while(i!=NULL)
+    {
+        printf("%d %c \t",i->a,i->b);
+        i=i->next;
+    }
+
+    return 0;
+}
